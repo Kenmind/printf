@@ -62,6 +62,7 @@ int _printf(const char *format, ...);
 printing_format *parse_format(const char *);
 int buf_push(char *, int *, char *);
 int *print(const char *, va_list, int *, char *);
+int print_rot13(va_list list);
 
 /*validity checker*/
 bool is_valid_id(char);
