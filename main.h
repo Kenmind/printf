@@ -1,7 +1,16 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef PRINTF
+#define PRINTF
 
-#define BUFSIZE MAXLENGTH
+#define BIT_SIZE 8
+#define true 1
+#define false 0
+typedef unsigned int bool;
+/*
+ *   a local buffer which will be used
+ *   to store data until a syscall is made to write it
+ *   in the std out
+ */
+#define BUFFER_SIZE 1024
 
 /* let's import some libraries here */
 
@@ -42,4 +51,4 @@ int print_unint(va_list parameters);
 int print_octal(va_list args);
 int rot_13(va_list parameters);
 
-#endif /* MAIN_H */
+#endif /* PRINTF */
