@@ -1,6 +1,15 @@
 #ifndef PRINTF
 #define PRINTF
 
+/* import some libraries */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <stddef.h>
+
+
 #define BIT_SIZE 8
 #define true 1
 #define false 0
