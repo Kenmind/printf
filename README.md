@@ -19,8 +19,8 @@ __General__
 * The prototypes of all your functions should be included in your header file called main.h
 * Don't forget to push your header file
 * All your header files should be include guarded
-* Note that we will not provide the \_putchar function for this project **
-**
+* Note that we will not provide the \_putchar function for this project 
+
 __GitHub__
 ##
 
@@ -63,78 +63,78 @@ __Tasks__
 *	Returns: the number of characters printed (excluding the null byte used to end output to strings)
 *	write output to stdout, the standard output stream
 *	format is a character string. The format string is composed of zero or more directives. See man 3 printf for more detail. You need to hundle the following conversion specifiers:
-'''
+```
 *		c
 *		s
 *		%
-'''
+```
 *	You don't have to reproduce the buffer handling of the C library printf function
 *	You don't have to handle the flag characters
 *	You don't have to handle field width
 *	You don't have to handle precision
-*	You don't have to handle the length modifiers **
-**
+*	You don't have to handle the length modifiers
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 1. Handle the following conversion specifiers:
-'''
+```
 *	d
 *	i
-'''
+```
 *	You don't have to handle the flag characters
 *	You don't have to handle field width
 *	You don't have to handle precision
-*	You don't have to handle the length modifiers **
-**
+*	You don't have to handle the length modifiers
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-2. Create a man page for your function. **
-**
+2. Create a man page for your function.
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 3. Handle the following custom conversion specifiers:
-'''
+```
 *	b: the unsigned int argument is converted to binary
-''' **
-**
+```
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 4. Handle the following conversion specifiers
-'''
+```
 *	u
 *	o
 *	x
 *	X
-'''
+```
 *	You don't have to handle the flag characters
 *	You don't have to handle field width
 *	You don't have to handle precision
-*	You don't have to handle the length modifiers **
-**
+*	You don't have to handle the length modifiers
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-5. Use a local buffer of 1024 chars in order to call write as little as possible. **
-**
+5. Use a local buffer of 1024 chars in order to call write as little as possible.
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 7. Handle the following custom conversion specifier:
-'''
+```
 *	s: prints the string.
 *	Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case 2 characters)
-''' **
-**
+```
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
@@ -143,73 +143,73 @@ __Repo:__
 *	You don't have to handle the flag characters
 *	You don't have to handle field width
 *	You don't have to handle precision
-*	You don't have to handle the length modifier **
-**
+*	You don't have to handle the length modifier
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 8. Handle the following flag characters for non-custom conversion specifiers:
-'''
+```
 *	+
 *	space
 *	\#
-''' **
-**
+```
+<br/>
 __REPO:__
 *	GitHub repository: printf
 #
 
 9. Handle the following length modifiers for non-custom conversion specifiers.
-'''
+```
 *	l
 *	h
-''' **
-**
-   Conversion specifiers to handle: d, i, u, o, x, X **
-**
+```
+<br/>
+   Conversion specifiers to handle: d, i, u, o, x, X
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-10. Handle the field width for non-custom conversion specifiers. **
-**
+10. Handle the field width for non-custom conversion specifiers.
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-11. Handle the precision for non-custom conversion specifiers. **
-**
+11. Handle the precision for non-custom conversion specifiers. 
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-12. Handle the 0 flag character for non-custom conversion specifiers. **
-**
+12. Handle the 0 flag character for non-custom conversion specifiers.
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
-13. Handle the - flag character for non-custom conversion specifiers. **
-**
+13. Handle the - flag character for non-custom conversion specifiers.
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 14. Handle the following custom conversion specifier:
-'''
+```
 *	r: prints the reversed string
-''' **
-**
+```
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
 
 15. Handle the following custom conversion specifier:
-'''
+```
 *	R: prints the ret13'ed string
-''' **
-**
+```
+<br/>
 __Repo:__
 *	GitHub repository: printf
 #
