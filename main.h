@@ -12,43 +12,73 @@ typedef unsigned int bool;
  */
 #define BUFFER_SIZE 1024
 
-/* let's import some libraries here */
-
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdarg.h>
-
-/* Let's define some types here */
-
 /**
- * struct format - Structure to print different type
- * @tps: type to print
- * @f: function to print
- */
-
-typedef struct format
+*struct printing_format - a struct for formating info
+*@flag: the flag used (+, -, '\0')
+*@width: the space taken during printing
+*@mod: modifier (l, h)
+*@precision: how manyt points after . in case of f
+*@zero_fill: --
+*@replaced: the total amount the format is holding
+*@validity: is this format a complete format
+*@printer: a function to handle the printing
+*/
+typedef struct printing_format
 {
-const char tps;
-int (*f)(va_list);
-} format_t;
+	char flag;
+	int width;
+	char mod;
+	int precision;
+	bool zero_fill;
+	int replaced;
+	bool validity;
+	char *(*printer)(va_list, struct printing_format *);
+} printing_format;
+/*printer functions*/
+char *_putchar(va_list, printing_format *);
+char *_putstr(va_list, printing_format *);
+char *_putint(va_list, printing_format *);
+char *_putuint(va_list, printing_format *);
+char *_putbin(va_list, printing_format *);
+char *_puthex(va_list, printing_format *);
+char *_putoct(va_list, printing_format *);
+char *_putHex(va_list, printing_format *);
+char *_putadress(va_list, printing_format *);
+char *_putrts(va_list, printing_format *);
+char *_putrot13(va_list, printing_format *);
+char *_putS(va_list, printing_format *);
 
-/* function prototypes goes here */
-
-int _putchar(char c);
+/*printf and its helpers*/
 int _printf(const char *format, ...);
-int print_c(va_list parameters);
-int print_s(va_list parameters);
-int print_percent(__attribute__((unused))va_list parameters);
-int print_i(va_list parameters);
-int print_d(va_list parameters);
-int (*get_func(const char a))(va_list);
-int print_integer(va_list parameters);
-int print_decimal(va_list parameters);
-int print_binary(va_list parameters);
-int binary_recursive(unsigned int num, int len);
-int print_unint(va_list parameters);
-int print_octal(va_list args);
-int rot_13(va_list parameters);
+printing_format *parse_format(const char *);
+int buf_push(char *, int *, char *);
+int *print(const char *, va_list, int *, char *);
+
+/*validity checker*/
+bool is_valid_id(char);
+int checkflag(printing_format *, char);
+int checkwidth(printing_format *, const char *);
+int checkprecision(printing_format *, const char *);
+int checkmod(printing_format *, const char *);
+
+/*parser to identify printing format*/
+printing_format *parse_format(const char *);
+
+/*printer identifier*/
+char *(*get_printer(char id))(va_list, printing_format *);
+
+/*num_utils*/
+int _pow(unsigned int, int);
+int _numLen(unsigned int);
+int max(int, int);
+char *to_hex(int);
+
+/*string utils*/
+int _strlen(char *);
+void rev_string(char *);
+void _toStr(unsigned long int, char *);
+char *_strcpy(char *, char *);
+char *rot13(char *);
+
 
 #endif /* PRINTF */
