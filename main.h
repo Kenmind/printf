@@ -3,92 +3,118 @@
 
 /* import some libraries */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
 #include <unistd.h>
-#include <stddef.h>
+#include <limits.h>
+#include <stdlib.h>
 
+#define OUTPUT_BUF_SIZE 1024
+#define BUF_FLUSH -1
 
-#define BIT_SIZE 8
-#define true 1
-#define false 0
-typedef unsigned int bool;
-/*
- *   a local buffer which will be used
- *   to store data until a syscall is made to write it
- *   in the std out
- */
-#define BUFFER_SIZE 1024
+#define FIELD_BUF_SIZE 50
+
+#define NULL_STRING "(null)"
+
+#define PARAMS_INIT {0,0,0,0,0,0,0,0,0,0}
+
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
 
 /**
-*struct printing_format - a struct for formating info
-*@flag: the flag used (+, -, '\0')
-*@width: the space taken during printing
-*@mod: modifier (l, h)
-*@precision: how manyt points after . in case of f
-*@zero_fill: --
-*@replaced: the total amount the format is holding
-*@validity: is this format a complete format
-*@printer: a function to handle the printing
-*/
-typedef struct printing_format
+ * struct parameters - parameters struct
+ *
+ * @unsign: flag if unsigned value
+ *
+ * @plus_flag: on if plus_flag specified
+ * @space_flag: on if hashtag_flag specified
+ * @hashtag_flag: on if_flag specified
+ * @zero_flag: on if_flag specifed
+ * @minus_flag: on if_flag specified
+ *
+ * @width: field width specified
+ * @precision: field precision specified
+ *
+ * @h_modifier: on if h_modifier is specified
+ * @l_modifier: on if l_modifier is specifies
+ *
+ */
+typedef struct parameters
 {
-	char flag;
-	int width;
-	char mod;
-	int precision;
-	bool zero_fill;
-	int replaced;
-	bool validity;
-	char *(*printer)(va_list, struct printing_format *);
-} printing_format;
-/*printer functions*/
-char *_putchar(va_list, printing_format *);
-char *_putstr(va_list, printing_format *);
-char *_putint(va_list, printing_format *);
-char *_putuint(va_list, printing_format *);
-char *_putbin(va_list, printing_format *);
-char *_puthex(va_list, printing_format *);
-char *_putoct(va_list, printing_format *);
-char *_putHex(va_list, printing_format *);
-char *_putadress(va_list, printing_format *);
-char *_putrts(va_list, printing_format *);
-char *_putrot13(va_list, printing_format *);
-char *_putS(va_list, printing_format *);
+	unsigned int unsign			: 1;
 
-/*printf and its helpers*/
+	unsigned int plus_flag		: 1;
+	unsigned int space_flag 	: 1;
+	unsigned int hashtag_flag 	: 1;
+	unsigned int zero_flag 		: 1;
+	unsigned int minus_flag 	: 1;
+
+	unsigned int width;
+	unsigned int precision;
+
+	unsigned int h_modifier 	: 1;
+	unsigned int l_modifier 	: 1;
+} params_t;
+
+/**
+ * struct specifier - Struct token
+ *
+ * @specifier: format token
+ * @f: The function associated
+ */
+typedef struct specifier
+{
+        char *specifier;
+        int (*f)(va_list, params_t *);
+} specifier_t;
+
+/* _put.c module */
+int _puts(char *str);
+int _putchar(int c);
+
+/* print_functions.c module */
+int print_char(va_list ap, params_t *params);
+int print_int(va_list ap, params_t *params);
+int print_string(va_list ap, params_t *params);
+int print_percent(va_list ap, params_t *params);
+int print_S(va_list ap, params_t *params);
+
+/* number.c module */
+char *convert(long int num, int base, int flags, params_t *params);
+int print_unsigned(va_list ap, params_t *params);
+int print_address(va_list ap, params_t *params);
+
+/* specifier.c module */
+int (*get_specifier(char *s))(va_list ap, params_t *params);
+int get_print_func(char *s, va_list ap, params_t *params);
+int get_flag(char *s, params_t *params);
+int get_modifier(char *s, params_t *params);
+char *get_width(char *s, params_t *params, va_list ap);
+
+/* convert_number.c module */
+int print_hex(va_list ap, params_t *params);
+int print_HEX(va_list ap, params_t *params);
+int print_binary(va_list ap, params_t *params);
+int print_octal(va_list ap, params_t *params);
+
+/* simple_printers.c module */
+int print_from_to(char *start, char *stop, char *except);
+int print_rev(va_list ap, params_t *params);
+int print_rot13(va_list ap, params_t *params);
+
+/* print_number.c module */
+int _isdigit(int c);
+int _strlen(char *s);
+int print_number(char *str, params_t *params);
+int print_number_right_shift(char *str, params_t *params);
+int print_number_left_shift(char *str, params_t *params);
+
+/* params.c module */
+void init_params(params_t *params, va_list ap);
+
+/* string_fields.c modoule */
+char *get_precision(char *p, params_t *params, va_list ap);
+
+/* _prinf.c module */
 int _printf(const char *format, ...);
-printing_format *parse_format(const char *);
-int buf_push(char *, int *, char *);
-int *print(const char *, va_list, int *, char *);
-int print_rot13(va_list list);
-
-/*validity checker*/
-bool is_valid_id(char);
-int checkflag(printing_format *, char);
-int checkwidth(printing_format *, const char *);
-int checkprecision(printing_format *, const char *);
-int checkmod(printing_format *, const char *);
-
-/*parser to identify printing format*/
-printing_format *parse_format(const char *);
-
-/*printer identifier*/
-char *(*get_printer(char id))(va_list, printing_format *);
-
-/*num_utils*/
-int _pow(unsigned int, int);
-int _numLen(unsigned int);
-int max(int, int);
-char *to_hex(int);
-
-/*string utils*/
-int _strlen(char *);
-void rev_string(char *);
-void _toStr(unsigned long int, char *);
-char *_strcpy(char *, char *);
-char *rot13(char *);
-
-
 #endif /* PRINTF */
