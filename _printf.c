@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		{"i", print_integer},
 		{"b", print_binary},
 		{"u", print_unint},
-		{"o", print_octal}'
+		{"o", print_octal},
 		{"x", },
 		{"X", },
 		{"R", rot_13},
