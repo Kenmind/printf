@@ -31,5 +31,10 @@ int print_string(va_list);
 int print_percent(__attribute__((unused))va_list);
 int print_integer(va_list list);
 int print_decimal(va_list list);
+int rot_13(va_list list);
+int print_octal(va_list list);
+int print_unint(va_list list);
+int print_binary(va_list list);
+int binary_recursive(va_list list);
 
 #endif /* PRINTF */
