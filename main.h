@@ -36,5 +36,9 @@ int print_octal(va_list list);
 int print_unint(va_list list);
 int print_binary(va_list list);
 int binary_recursive(unsigned int num, int len);
+int _hex_str(unsigned int n, unsigned int hex, char alpha);
+int _hex_l(va_list list);
+int _hex_u(va_list list);
+int str(va_list list);
 
 #endif /* PRINTF */
