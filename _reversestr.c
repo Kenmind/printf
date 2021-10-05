@@ -1,42 +1,27 @@
-#include "main.h"
-/**
- *print_r - prints a string in reverse
- *@list:list to increment
- *Return:no. of charcters printed
- */
-int print_r(va_list list)
+#include <stdio.h>
+int main()
 {
-	char *s = va_arg(list, char *);
-	int i, c;
+   char s[1000], r[1000];
+   int begin, end, count = 0;
 
-	if (s == NULL)
-		s = ")llun(";
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	i--;
-	for (; i >= 0; i--)
-	{
-		_putchar(s[i]);
-		c++;
-	}
-	return (i);
-}
+   printf("Input a string\n");
+   gets(s);
 
-void rev_string(char *s)
-{
-	int length = _strlen(s);
-	int counter = 0;
-	char tmp;
+   // Calculating string length
 
-	while (counter < length / 2)
-	{
-		tmp = *(s + counter);
-		*(s + counter) = *(s + length - 1 - counter);
-		*(s + length - 1 - counter) = tmp;
-		counter++;
-	}
+   while (s[count] != '\0')
+      count++;
 
+   end = count - 1;
+
+   for (begin = 0; begin < count; begin++) {
+      r[begin] = s[end];
+      end--;
+   }
+
+   r[begin] = '\0';
+
+   printf("%s\n", r);
+
+   return 0;
 }
