@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	convert_t f_list[] = {
 		{"c", print_char},
 		{"s", print_string},
-		{NULL, NULL},
+		{"%", print_percent},
 	};
 	va_list arg_list;
 

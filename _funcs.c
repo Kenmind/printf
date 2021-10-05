@@ -30,3 +30,19 @@ int print_string(va_list list)
 	}
 	return (i);
 }
+
+
+/**
+ *print_percent - function to print %
+ *@va_list: unused
+ *
+ *Return: always 1
+ */
+
+int print_percent(__attribute__((unused))va_list)
+{
+char c = '%';
+_putchar(c);
+return (1);
+}
+
