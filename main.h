@@ -35,6 +35,6 @@ int rot_13(va_list list);
 int print_octal(va_list list);
 int print_unint(va_list list);
 int print_binary(va_list list);
-int binary_recursive(va_list list);
+int binary_recursive(unsigned int num, int len);
 
 #endif /* PRINTF */

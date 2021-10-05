@@ -125,11 +125,13 @@ int print_unint(va_list list)
 int binary_recursive(unsigned int num, int len)
 {
 	if (num / 2)
-		len = binary_recursive(num / 2, len + 1);
+		len = binary_recursive((num / 2), (len + 1));
 	_putchar(num % 2 + '0');
 
 	return (len);
 }
+
+
 
 /**
  * print_binary - convert unsigned int to binary
