@@ -46,3 +46,83 @@ _putchar(c);
 return (1);
 }
 
+
+/**
+ * print_integer - prints an integer
+ * @list: integer to print
+ *
+ * Return: number of chars and digits printed
+ */
+
+int print_integer(va_list list)
+{
+int x[10];
+int f, d, t, y, i;
+
+t = va_arg(list, int);
+i = 0;
+d = 1000000000;
+x[0] = t / d;
+for (f = 1; f < 10; f++)
+{
+d /= 10;
+x[f] = (t / d) % 10;
+}
+if (t < 0)
+{
+_putchar('-');
+i++;
+for (f = 0; f < 10; f++)
+x[f] *= -1;
+}
+for (f = 0, y = 0; f < 10; f++)
+{
+y += x[f];
+if (y != 0 || f == 9)
+{
+_putchar('0' + x[f]);
+i++;
+}
+}
+return (i);
+}
+
+/**
+ *print_decimal - print a decimal
+ *@list: decimal to print
+ *
+ *Return: number of characters and digits printed
+ */
+
+int print_decimal(va_list list)
+{
+int x[10];
+int f, d, t, y, i;
+
+t = va_arg(list, int);
+i = 0;
+d = 1000000000;
+x[0] = t / d;
+for (f = 1; f < 10; f++)
+{
+d /= 10;
+x[f] = (t / d) % 10;
+}
+if (t < 0)
+{
+_putchar('-');
+i++;
+for (f = 0; f < 10; f++)
+x[f] *= -1;
+}
+for (f = 0, y = 0; f < 10; f++)
+{
+y += x[f];
+if (y != 0 || f == 9)
+{
+_putchar('0' + x[f]);
+i++;
+}
+}
+return (i);
+}
