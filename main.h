@@ -58,5 +58,6 @@ int str(va_list list);
 void _write(buffer *b_r, char c);
 void _write_str(buffer *b_r, char *s);
 void _write_tmpbuf(buffer *b_r);
+int rev_string(__attribute__((unused))va_list list, char *s, ...);
 
 #endif /* PRINTF */
