@@ -1,12 +1,10 @@
 #include "main.h"
-
 /**
  * _printf - receive the main string and all arguments
  * to print a formated string
  * @format: string containing all the desired characters
  * Return: the number of characters printed (without the null byte)
  */
-
 int _printf(const char *format, ...)
 {
 	int printed_chars;
@@ -19,7 +17,6 @@ int _printf(const char *format, ...)
 		{"i", print_integer},
 		{"x", _hex_l},
 		{"X", _hex_u},
-		{"p", _hex_u},
 		{"p", _hex_l},
 		{"S", str},
 		{"R", rot_13},
@@ -34,6 +31,7 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
+
 	va_start(arg_list, format);
 	/*call parser function*/
 	printed_chars = parser(format, f_list, arg_list);
