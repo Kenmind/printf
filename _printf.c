@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	int printed_chars;
 
-	convert_t f_list[] = {
+	convert_t f_list[BUFFSIZE] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percent},

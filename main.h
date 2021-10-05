@@ -9,6 +9,8 @@
 #include <limits.h>
 #include <stdlib.h>
 
+#define BUFFSIZE 1024
+
 /**
  * struct convert - defines a struct for sumbols and functions
  *
