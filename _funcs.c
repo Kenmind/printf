@@ -34,12 +34,12 @@ int print_string(va_list list)
 
 /**
  *print_percent - function to print %
- *@va_list: unused
+ *@list: unused
  *
  *Return: always 1
  */
 
-int print_percent(__attribute__((unused))va_list)
+int print_percent(__attribute__((unused))va_list list)
 {
 char c = '%';
 _putchar(c);
