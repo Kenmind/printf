@@ -24,6 +24,18 @@ typedef struct convert
 	int (*f)(va_list);
 } convert_t;
 
+typedef struct buffer
+{
+	char *buf;
+	char *tmpbuf;
+	const char *format;
+	va_list ap;
+	int bp;
+	int tp;
+	int fp;
+	unsigned int printed;
+} buffer;
+
 /*Main functions*/
 int parser(const char *format, convert_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
@@ -43,5 +55,8 @@ int _hex_l(va_list list);
 int _hex_u(va_list list);
 int str(va_list list);
 
+void _write(buffer *b_r, char c);
+void _write_str(buffer *b_r, char *s);
+void _write_tmpbuf(buffer *b_r);
 
 #endif /* PRINTF */
