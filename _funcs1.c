@@ -57,6 +57,7 @@ int _hex_u(va_list list)
  * @list: string
  * Return: number of char
  */
+
 int str(va_list list)
 {
 	int len;
@@ -67,8 +68,8 @@ int str(va_list list)
 	if (str == NULL)
 		str = "(null)";
 	len = 0;
-
 	while (str[len] != '\0')
 		len = len + _putchar(str[len]);
 	return (len);
 }
+
