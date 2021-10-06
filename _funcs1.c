@@ -53,32 +53,28 @@ int _hex_u(va_list list)
 }
 
 /**
- * rev_string - reverse string
- * @list: argument
- * @s: string
- * Return: 0
+ * print_r - prints a string in reverse
+ * @list:list to increment
+ * Return:no. of charcters printed
  */
 
-int rev_string(__attribute__((unused))va_list list, char *s, ...)
+int print_r(va_list list)
 {
-	int i, max, half;
-	char first, last;
+	char *s = va_arg(list, char *);
+	int i, c;
 
+	if (s == NULL)
+		s = ")llun(";
 	i = 0;
-
-	while (s[i] != '\0')
+	while (s[i])
 	{
 		i++;
 	}
-	max = i - 1;
-	half = max / 2;
-	while (half >= 0)
+	i--;
+	for (; i >= 0; i--)
 	{
-		first = s[max - half];
-		last = s[half];
-		s[half] = first;
-		s[max - half] = last;
-		half--;
+		_putchar(s[i]);
+		c++;
 	}
-	return (0);
+	return (i);
 }

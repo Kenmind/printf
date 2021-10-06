@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		{"X", _hex_u},
 		{"p", _hex_l},
 		{"S", print_string},
-		/*{\"r\", rev_string},*/
+		{"r", print_r},
 		{"R", rot_13},
 		{"b", print_binary},
 		{"u", print_unint},

@@ -24,6 +24,19 @@ typedef struct convert
 	int (*f)(va_list);
 } convert_t;
 
+/**
+ * struct buffer - writes to the local buffer, and
+ * frees memory when buffer is full
+ * @buf: char buffer
+ * @tmpbuf: local buffer
+ * @format: format string
+ * @ap: int1
+ * @bp: int2
+ * @tp: int3
+ * @fp: int4
+ * @printed: unsigned int
+ */
+
 typedef struct buffer
 {
 	char *buf;
@@ -34,7 +47,7 @@ typedef struct buffer
 	int tp;
 	int fp;
 	unsigned int printed;
-} buffer;
+} buffer_t;
 
 /*Main functions*/
 int parser(const char *format, convert_t f_list[], va_list arg_list);
@@ -55,5 +68,6 @@ int _hex_l(va_list list);
 int _hex_u(va_list list);
 int str(va_list list);
 int rev_string(__attribute__((unused))va_list list, char *s, ...);
+int print_r(va_list list);
 
 #endif /* PRINTF */
