@@ -24,6 +24,15 @@ int _printf(const char *format, ...)
 		{"b", print_binary},
 		{"u", print_unint},
 		{"o", print_octal},
+	/*	{"0", get_width},
+		{" ", get_width},
+		{"#", get_width},
+		{"+", get_width},
+		{"-", get_flags},
+		{".", get_precision},
+		{"*", get_precision}
+		{"h", get_length},
+		{"l", get_length}, */
 		{NULL, NULL},
 	};
 	va_list arg_list;
@@ -34,8 +43,9 @@ int _printf(const char *format, ...)
 	}
 
 	va_start(arg_list, format);
-	/*call parser function*/
+	/*call functions */
 	printed_chars = parser(format, f_list, arg_list);
+
 	va_end(arg_list);
 	return (printed_chars);
 }

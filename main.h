@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define BUFFSIZE 1024
 
@@ -25,29 +26,25 @@ typedef struct convert
 } convert_t;
 
 /**
- * struct buffer - writes to the local buffer, and
- * frees memory when buffer is full
- * @buf: char buffer
- * @tmpbuf: local buffer
- * @format: format string
- * @ap: int1
- * @bp: int2
- * @tp: int3
- * @fp: int4
- * @printed: unsigned int
+ * struct modifier - mofifier fields collection
+ * @flags: flags field composed of ['0', ' ', '#', '+', '-']
+ * @width: width field, positive number
+ * @precision: precision field positive number not including '.'
+ * or -1 for '*'
+ * @length: length field string composed of ['h', 'l']
+ * @specifier: specifier character can one of
+ * ['c', 's', '%', 'd', 'i', 'b', 'u', 'o', 'x', 'X', 'S', 'p', 'r', 'R']
+ *
  */
-
-typedef struct buffer
+typedef struct modifier
 {
-	char *buf;
-	char *tmpbuf;
-	const char *format;
-	va_list ap;
-	int bp;
-	int tp;
-	int fp;
-	unsigned int printed;
-} buffer_t;
+	char *flags;
+	int width;
+	int precision;
+	char *length;
+	char specifier;
+} modifier_t;
+
 
 /*Main functions*/
 int parser(const char *format, convert_t f_list[], va_list arg_list);
@@ -69,5 +66,14 @@ int _hex_u(va_list list);
 int str(va_list list);
 int rev_string(__attribute__((unused))va_list list, char *s, ...);
 int print_r(va_list list);
+char *print_rev(modifier_t *modif, va_list ap);
+char *print_big_s(modifier_t *modif, va_list ap);
+char *ctox(char c);
+char *get_flags(const char *s, unsigned int *pos);
+char get_specifier(const char *s, unsigned int *pos);
+char *get_length(const char *s, unsigned int *pos);
+int get_precision(const char *s, unsigned int *pos);
+int get_width(const char *s, unsigned int *pos);
+void *re_alloc_mem(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif /* PRINTF */
