@@ -24,15 +24,6 @@ int _printf(const char *format, ...)
 		{"b", print_binary},
 		{"u", print_unint},
 		{"o", print_octal},
-	/*	{"0", get_width},
-		{" ", get_width},
-		{"#", get_width},
-		{"+", get_width},
-		{"-", get_flags},
-		{".", get_precision},
-		{"*", get_precision}
-		{"h", get_length},
-		{"l", get_length}, */
 		{NULL, NULL},
 	};
 	va_list arg_list;

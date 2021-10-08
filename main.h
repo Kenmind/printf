@@ -66,14 +66,5 @@ int _hex_u(va_list list);
 int str(va_list list);
 int rev_string(__attribute__((unused))va_list list, char *s, ...);
 int print_r(va_list list);
-char *print_rev(modifier_t *modif, va_list ap);
-char *print_big_s(modifier_t *modif, va_list ap);
-char *ctox(char c);
-char *get_flags(const char *s, unsigned int *pos);
-char get_specifier(const char *s, unsigned int *pos);
-char *get_length(const char *s, unsigned int *pos);
-int get_precision(const char *s, unsigned int *pos);
-int get_width(const char *s, unsigned int *pos);
-void *re_alloc_mem(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif /* PRINTF */
